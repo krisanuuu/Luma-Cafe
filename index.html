@@ -4,290 +4,926 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Luma Café in Varkala, Kerala. Enjoy freshly brewed coffee, delicious bakery treats, and beautiful café moments.">
-    <title>Luma Café | Home</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Enjoy freshly brewed coffee, delicious bakery treats, and warm moments at Luma Café.">
+    <title>Luma Café | A Little More Than Coffee</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #faf7f1;
+            color: #3f2b22;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        .section-label {
+            color: #b77b4b;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 42px);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-description {
+            max-width: 600px;
+            color: #75675f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 23px;
+            background: #493126;
+            color: #fff;
+            border: 1px solid #493126;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #b77b4b;
+            border-color: #b77b4b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #493126;
+        }
+
+        .btn-outline:hover {
+            color: #fff;
+        }
+
+        /* HEADER */
+        .home-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #faf7f1;
+            border-bottom: 1px solid #e9e1d7;
+        }
+
+        .header-inner {
+            width: min(1100px, 90%);
+            min-height: 72px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            font-weight: 700;
+            line-height: 0.95;
+            color: #3f2b22;
+        }
+
+        .logo span {
+            display: block;
+            color: #bd8050;
+        }
+
+        .home-nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .home-nav a {
+            color: #51463f;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .home-nav a:hover,
+        .home-nav a.active {
+            color: #b77b4b;
+        }
+
+        .header-btn {
+            padding: 13px 22px;
+            font-size: 12px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 55px 0 65px;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .hero-eyebrow {
+            color: #74675f;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(43px, 5.2vw, 68px);
+            font-weight: 700;
+            line-height: 1.14;
+            letter-spacing: -1.5px;
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            color: #b77b4b;
+        }
+
+        .hero-description {
+            max-width: 510px;
+            color: #75675f;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 27px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-image-wrap {
+            height: 490px;
+            overflow: hidden;
+            border-radius: 5px;
+            background: #eee3d5;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-image-wrap:hover .hero-image {
+            transform: scale(1.04);
+        }
+
+        /* FEATURED MENU */
+        .featured {
+            padding: 75px 0 85px;
+            background: #f2ece3;
+        }
+
+        .featured-heading {
+            text-align: center;
+            margin: 0 auto 42px;
+        }
+
+        .featured-heading .section-description {
+            margin: auto;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .food-card {
+            background: #fffdf9;
+            border: 1px solid #e9e0d6;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(63, 43, 34, 0.10);
+        }
+
+        .food-image-wrap {
+            height: 235px;
+            overflow: hidden;
+            background: #e9dfd3;
+        }
+
+        .food-image {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .food-card:hover .food-image {
+            transform: scale(1.06);
+        }
+
+        .food-content {
+            padding: 22px 20px 24px;
+        }
+
+        .food-category {
+            color: #b77b4b;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .food-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            font-weight: 700;
+            color: #3f2b22;
+            line-height: 1.3;
+            margin-bottom: 9px;
+        }
+
+        .food-description {
+            color: #75675f;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 44px;
+            margin-bottom: 18px;
+        }
+
+        .food-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid #eee7df;
+            padding-top: 15px;
+        }
+
+        .food-price {
+            font-family: 'Playfair Display', serif;
+            color: #b77b4b;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .food-link {
+            color: #493126;
+            font-size: 12px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .food-link:hover {
+            color: #b77b4b;
+        }
+
+        .featured-action {
+            text-align: center;
+            margin-top: 38px;
+        }
+
+        /* ABOUT PREVIEW */
+        .about-preview {
+            padding: 85px 0;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image-wrap {
+            height: 390px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .about-image {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content .section-description {
+            margin-bottom: 25px;
+        }
+
+        /* VISIT SECTION */
+        .visit-section {
+            padding: 65px 20px;
+            background: #493126;
+            color: #fff;
+            text-align: center;
+        }
+
+        .visit-section .section-label {
+            color: #d9a77d;
+        }
+
+        .visit-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.25;
+            color: #fffaf4;
+            margin-bottom: 14px;
+        }
+
+        .visit-description {
+            max-width: 570px;
+            margin: 0 auto 25px;
+            color: #e4d6ca;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .visit-section .btn {
+            background: #faf7f1;
+            border-color: #faf7f1;
+            color: #493126;
+        }
+
+        .visit-section .btn:hover {
+            background: #b77b4b;
+            border-color: #b77b4b;
+            color: white;
+        }
+
+        /* FOOTER */
+        .home-footer {
+            padding: 45px 0 20px;
+            background: #2e211b;
+            color: #eee5dc;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 32px;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fffaf4;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: #d19a6b;
+        }
+
+        .footer-text {
+            max-width: 290px;
+            color: #c9b9ac;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #fffaf4;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a,
+        .footer-links p {
+            color: #c9b9ac;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d19a6b;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.13);
+            padding-top: 17px;
+            text-align: center;
+            color: #b9a99d;
+            font-size: 12px;
+        }
+
+        /* TABLET */
+        @media (max-width: 900px) {
+            .hero-inner {
+                gap: 35px;
+            }
+
+            .hero-image-wrap {
+                height: 410px;
+            }
+
+            .hero-title {
+                font-size: clamp(40px, 5.5vw, 56px);
+            }
+
+            .food-grid {
+                gap: 17px;
+            }
+
+            .food-image-wrap {
+                height: 195px;
+            }
+
+            .food-content {
+                padding: 18px 15px 20px;
+            }
+
+            .food-title {
+                font-size: 20px;
+            }
+
+            .about-inner {
+                gap: 35px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 650px) {
+            .header-inner {
+                min-height: auto;
+                padding: 15px 0;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .home-nav {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+                padding-top: 12px;
+                border-top: 1px solid #e9e1d7;
+            }
+
+            .home-nav a {
+                font-size: 12px;
+            }
+
+            .header-btn {
+                padding: 10px 14px;
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 42px 0 55px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-eyebrow {
+                font-size: 12px;
+                margin-bottom: 16px;
+            }
+
+            .hero-title {
+                font-size: clamp(39px, 10vw, 55px);
+                letter-spacing: -0.8px;
+                margin-bottom: 17px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+                margin-bottom: 22px;
+            }
+
+            .hero-image-wrap {
+                height: 330px;
+            }
+
+            .featured {
+                padding: 58px 0 65px;
+            }
+
+            .featured-heading {
+                margin-bottom: 30px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .food-image-wrap {
+                height: 245px;
+            }
+
+            .food-content {
+                padding: 20px;
+            }
+
+            .food-title {
+                font-size: 23px;
+            }
+
+            .food-description {
+                min-height: 0;
+            }
+
+            .about-preview {
+                padding: 60px 0;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-image-wrap {
+                height: 300px;
+            }
+
+            .visit-section {
+                padding: 55px 20px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .home-footer {
+                padding-top: 38px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .home-nav {
+                gap: 7px;
+            }
+
+            .home-nav a {
+                font-size: 11px;
+            }
+
+            .hero-actions .btn {
+                padding: 12px 15px;
+                font-size: 12px;
+            }
+
+            .hero-image-wrap {
+                height: 270px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container navbar">
-            <a href="index.html" class="logo">Luma<span>Café</span></a>
+    <!-- HEADER -->
+    <header class="home-header">
+        <div class="header-inner">
 
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="menu.html" class="nav-link">Menu</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+            <a href="index.html" class="logo">
+                Luma
+                <span>Café</span>
+            </a>
+
+            <nav class="home-nav" aria-label="Main navigation">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="contact.html">Contact</a>
             </nav>
 
-            <a href="menu.html" class="nav-button">View Menu</a>
+            <a href="menu.html" class="btn header-btn">View Menu</a>
+
         </div>
     </header>
 
+
     <main>
 
-        <!-- Hero Section -->
+        <!-- HERO SECTION -->
         <section class="hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <p class="section-tag">WELCOME TO LUMA CAFÉ</p>
+            <div class="container hero-inner">
 
-                    <h1>Where Every Cup Feels Like Home</h1>
+                <div class="hero-content">
 
-                    <p>
-                        Discover the perfect blend of freshly brewed
-                        coffee, delicious bakery treats, and warm
-                        moments at Luma Café.
+                    <p class="hero-eyebrow">WELCOME TO LUMA CAFÉ</p>
+
+                    <h1 class="hero-title">
+                        Where Every<br>
+                        Cup Feels Like<br>
+                        Home
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover the perfect blend of freshly brewed coffee,
+                        delicious bakery treats, and warm moments at Luma Café.
                     </p>
 
-                    <div class="hero-buttons">
-                        <a href="menu.html" class="nav-button">
-                            Explore Our Menu
-                        </a>
-
-                        <a href="about.html" class="nav-link">
-                            Our Story
-                        </a>
+                    <div class="hero-actions">
+                        <a href="menu.html" class="btn">Explore Our Menu</a>
+                        <a href="about.html" class="btn btn-outline">Our Story</a>
                     </div>
+
                 </div>
 
-                <div class="hero-image">
+                <div class="hero-image-wrap">
                     <img
                         src="images/cafe-hero.jpg"
-                        alt="Coffee and welcoming atmosphere at Luma Café"
+                        alt="Freshly prepared coffee at Luma Café"
+                        class="hero-image"
                     >
-                </div>
-            </div>
-        </section>
-
-        <!-- Introduction Section -->
-        <section class="intro-section">
-            <div class="container intro-content">
-
-                <div class="intro-image">
-                    <img
-                        src="images/cafe-interior.jpg"
-                        alt="Cozy interior of Luma Café"
-                    >
-                </div>
-
-                <div class="intro-text">
-                    <p class="section-tag">A PLACE TO SLOW DOWN</p>
-
-                    <h2>More Than Just a Cup of Coffee</h2>
-
-                    <p>
-                        At Luma Café, we believe the best moments
-                        are often the simplest ones. A comforting
-                        cup of coffee, a freshly baked treat, and
-                        good company can make an ordinary day special.
-                    </p>
-
-                    <p>
-                        Whether you're catching up with friends,
-                        taking a break, or enjoying a quiet moment,
-                        our café is a place to feel welcome.
-                    </p>
-
-                    <a href="about.html" class="text-link">
-                        Discover Our Story →
-                    </a>
                 </div>
 
             </div>
         </section>
 
-        <!-- Featured Menu Section -->
-        <section class="featured-section">
+
+        <!-- FEATURED MENU -->
+        <section class="featured" id="featured-menu">
             <div class="container">
 
-                <div class="section-heading">
-                    <p class="section-tag">MADE WITH LOVE</p>
+                <div class="featured-heading">
+                    <p class="section-label">A TASTE OF LUMA</p>
 
-                    <h2>Our Café Favourites</h2>
+                    <h2 class="section-title">Our Customer Favourites</h2>
 
-                    <p>
-                        Take a look at some of the treats waiting
-                        for you at Luma Café.
+                    <p class="section-description">
+                        From rich coffee to freshly baked treats,
+                        discover a few favourites made to brighten your day.
                     </p>
                 </div>
 
-                <div class="featured-grid">
+                <div class="food-grid">
 
-                    <!-- Cappuccino -->
-                    <div class="menu-card">
-                        <img
-                            src="images/cappuccino.jpg"
-                            alt="Freshly prepared cappuccino"
-                        >
+                    <!-- CAPPUCCINO -->
+                    <article class="food-card">
 
-                        <div class="menu-card-content">
-                            <h3>Classic Cappuccino</h3>
+                        <div class="food-image-wrap">
+                            <img
+                                src="images/cappuccino.jpg"
+                                alt="Fresh cappuccino"
+                                class="food-image"
+                                loading="lazy"
+                            >
+                        </div>
 
-                            <p>
-                                Rich espresso blended with steamed
-                                milk and a smooth layer of foam.
+                        <div class="food-content">
+                            <p class="food-category">Coffee</p>
+
+                            <h3 class="food-title">Cappuccino</h3>
+
+                            <p class="food-description">
+                                Smooth espresso blended with steamed milk
+                                and a soft layer of creamy foam.
                             </p>
 
-                            <span class="price">₹150</span>
+                            <div class="food-bottom">
+                                <span class="food-price">₹150</span>
+                                <a href="menu.html" class="food-link">View Menu →</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Croissant -->
-                    <div class="menu-card">
-                        <img
-                            src="images/croissant.jpg"
-                            alt="Freshly baked golden croissant"
-                        >
+                    </article>
 
-                        <div class="menu-card-content">
-                            <h3>Butter Croissant</h3>
 
-                            <p>
+                    <!-- CROISSANT -->
+                    <article class="food-card">
+
+                        <div class="food-image-wrap">
+                            <img
+                                src="images/croissant.jpg"
+                                alt="Freshly baked croissant"
+                                class="food-image"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="food-content">
+                            <p class="food-category">Bakery</p>
+
+                            <h3 class="food-title">Butter Croissant</h3>
+
+                            <p class="food-description">
                                 A golden, flaky bakery favourite
-                                with a soft, buttery centre.
+                                with a delicate buttery taste.
                             </p>
 
-                            <span class="price">₹120</span>
+                            <div class="food-bottom">
+                                <span class="food-price">₹120</span>
+                                <a href="menu.html" class="food-link">View Menu →</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Iced Latte -->
-                    <div class="menu-card">
-                        <img
-                            src="images/iced-latte.jpg"
-                            alt="Refreshing iced latte"
-                        >
+                    </article>
 
-                        <div class="menu-card-content">
-                            <h3>Iced Latte</h3>
 
-                            <p>
-                                A refreshing combination of espresso,
-                                chilled milk, and ice.
+                    <!-- ICED LATTE -->
+                    <article class="food-card">
+
+                        <div class="food-image-wrap">
+                            <img
+                                src="images/iced-latte.jpg"
+                                alt="Refreshing iced latte"
+                                class="food-image"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="food-content">
+                            <p class="food-category">Cold Drinks</p>
+
+                            <h3 class="food-title">Iced Latte</h3>
+
+                            <p class="food-description">
+                                Chilled espresso and milk served over ice
+                                for a refreshing coffee experience.
                             </p>
 
-                            <span class="price">₹170</span>
+                            <div class="food-bottom">
+                                <span class="food-price">₹170</span>
+                                <a href="menu.html" class="food-link">View Menu →</a>
+                            </div>
                         </div>
-                    </div>
+
+                    </article>
 
                 </div>
 
-                <div class="section-button">
-                    <a href="menu.html" class="nav-button">
-                        View Full Menu
-                    </a>
+                <div class="featured-action">
+                    <a href="menu.html" class="btn">Explore Full Menu</a>
                 </div>
 
             </div>
         </section>
 
-        <!-- Café Experience Section -->
-        <section class="experience-section">
-            <div class="container experience-content">
 
-                <div class="experience-text">
-                    <p class="section-tag">THE LUMA EXPERIENCE</p>
+        <!-- ABOUT PREVIEW -->
+        <section class="about-preview">
+            <div class="container about-inner">
 
-                    <h2>Good Coffee. Good Food. Good Moments.</h2>
-
-                    <p>
-                        Enjoy a relaxed café atmosphere, freshly
-                        prepared favourites, and a welcoming place
-                        to spend time with the people who matter.
-                    </p>
-
-                    <a href="contact.html" class="nav-button">
-                        Visit Us
-                    </a>
-                </div>
-
-                <div class="experience-image">
+                <div class="about-image-wrap">
                     <img
                         src="images/cafe-interior.jpg"
-                        alt="Comfortable seating inside Luma Café"
+                        alt="Warm and welcoming café interior"
+                        class="about-image"
+                        loading="lazy"
                     >
                 </div>
 
+                <div class="about-content">
+
+                    <p class="section-label">OUR STORY</p>
+
+                    <h2 class="section-title">
+                        A Little More Than Coffee
+                    </h2>
+
+                    <p class="section-description">
+                        At Luma Café, we believe every cup brings a moment
+                        worth enjoying. Whether you are meeting friends,
+                        taking a break, or spending a quiet afternoon,
+                        we want every visit to feel special.
+                    </p>
+
+                    <a href="about.html" class="btn">Discover Our Story</a>
+
+                </div>
+
             </div>
         </section>
 
-        <!-- Call to Action Section -->
-        <section class="cta-section">
-            <div class="container">
 
-                <p class="section-tag">YOUR TABLE IS WAITING</p>
+        <!-- VISIT SECTION -->
+        <section class="visit-section">
 
-                <h2>Make Today a Little More Special</h2>
+            <p class="section-label">YOUR TABLE IS WAITING</p>
 
-                <p>
-                    Come by Luma Café for a cup of coffee,
-                    a delicious treat, and a moment to yourself.
-                </p>
+            <h2 class="visit-title">
+                Make Your Day a Little Warmer
+            </h2>
 
-                <a href="contact.html" class="nav-button">
-                    Get in Touch
-                </a>
+            <p class="visit-description">
+                Visit Luma Café for freshly brewed coffee,
+                delicious treats, and moments worth remembering.
+            </p>
 
-            </div>
+            <a href="contact.html" class="btn">Get in Touch</a>
+
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
 
-            <!-- Footer Brand -->
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    Luma<span>Café</span>
-                </a>
+    <!-- FOOTER -->
+    <footer class="home-footer">
+        <div class="container">
 
-                <p>
-                    Good coffee, fresh bakes, and beautiful moments.
-                    Welcome to Luma Café.
-                </p>
-            </div>
+            <div class="footer-inner">
 
-            <!-- Footer Navigation -->
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="menu.html">Menu</a>
-                <a href="contact.html">Contact</a>
-            </div>
-
-            <!-- Footer Contact -->
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-
-                <p>
-                    <a href="tel:+919037261654">
-                        +91 90372 61654
+                <div>
+                    <a href="index.html" class="footer-logo">
+                        Luma <span>Café</span>
                     </a>
-                </p>
 
-                <p>
-                    <a href="mailto:knkrisanu777@gmail.com">
-                        knkrisanu777@gmail.com
-                    </a>
-                </p>
+                    <p class="footer-text">
+                        A little more than coffee.
+                        A warm place for good coffee,
+                        delicious treats, and lovely moments.
+                    </p>
+                </div>
 
-                <p>Varkala, Kerala, India</p>
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="menu.html">Our Menu</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+
+                    <div class="footer-links">
+                        <p>Varkala, Kerala, India</p>
+                        <a href="tel:+919037261654">+91 90372 61654</a>
+                        <a href="mailto:knkrisanu777@gmail.com">
+                            knkrisanu777@gmail.com
+                        </a>
+                        <p>Mon–Fri: 9:00 AM – 9:00 PM</p>
+                        <p>Sat–Sun: 10:00 AM – 10:00 PM</p>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 Luma Café. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>© 2026 Luma Café. All rights reserved.</p>
             </div>
+
         </div>
     </footer>
 
