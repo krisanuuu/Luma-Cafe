@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Luma Café menu in Varkala, Kerala, featuring freshly brewed coffee, bakery favourites, and refreshing cold drinks.">
+    <title>Our Menu | Luma Café</title>
+
+    <!-- Stylish Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Menu Page Styling -->
+    <style>
+        /* General menu typography */
+        .menu-page {
+            font-family: "DM Sans", sans-serif;
+            color: #30251f;
+        }
+
+        .menu-page h1,
+        .menu-page h2,
+        .menu-page h3 {
+            font-family: "Playfair Display", Georgia, serif;
+        }
+
+        /* Menu Hero */
+        .menu-page .menu-hero {
+            text-align: center;
+            padding: 100px 20px 85px;
+        }
+
+        .menu-page .menu-hero .section-tag {
+            font-family: "DM Sans", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .menu-page .menu-hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            font-weight: 600;
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .menu-page .menu-hero p:not(.section-tag) {
+            font-family: "DM Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto;
+            color: #6f6a64;
+        }
+
+        /* Menu Sections */
+        .menu-page .menu-section {
+            padding: 65px 0;
+        }
+
+        .menu-page .menu-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        .menu-page .menu-heading .section-tag {
+            font-family: "DM Sans", sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .menu-page .menu-heading h2 {
+            font-size: clamp(32px, 4vw, 46px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+
+        .menu-page .menu-heading p:not(.section-tag) {
+            font-family: "DM Sans", sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #77716b;
+        }
+
+        /* Menu Grid */
+        .menu-page .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        /* Menu Cards */
+        .menu-page .menu-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 24px rgba(50, 35, 20, 0.07);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .menu-page .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(50, 35, 20, 0.12);
+        }
+
+        .menu-page .menu-card img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .menu-page .menu-card-content {
+            padding: 22px 22px 24px;
+        }
+
+        .menu-page .menu-card-content h3 {
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 1.35;
+            color: #30251f;
+            margin-bottom: 10px;
+        }
+
+        .menu-page .menu-card-content p {
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.75;
+            color: #77716b;
+            margin-bottom: 18px;
+        }
+
+        .menu-page .price {
+            font-family: "DM Sans", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #9a6845;
+        }
+
+        /* Menu Note */
+        .menu-page .menu-note {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .menu-page .menu-note p {
+            font-family: "DM Sans", sans-serif;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #77716b;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 900px) {
+            .menu-page .menu-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-page .menu-hero {
+                padding: 70px 18px 60px;
+            }
+
+            .menu-page .menu-hero h1 {
+                letter-spacing: -0.5px;
+            }
+
+            .menu-page .menu-section {
+                padding: 45px 0;
+            }
+
+            .menu-page .menu-heading {
+                margin: 0 auto 28px;
+                padding: 0 12px;
+            }
+
+            .menu-page .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .menu-page .menu-card img {
+                height: 230px;
+            }
+
+            .menu-page .menu-card-content {
+                padding: 18px;
+            }
+
+            .menu-page .menu-card-content h3 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container navbar">
+
+            <a href="index.html" class="logo">
+                Luma<span>Café</span>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="menu.html" class="nav-link active">Menu</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <a href="contact.html" class="nav-button">Visit Us</a>
+
+        </div>
+    </header>
+
+    <main class="menu-page">
+
+        <!-- Menu Hero -->
+        <section class="menu-hero">
+            <div class="container">
+
+                <p class="section-tag">A TASTE OF LUMA</p>
+
+                <h1>Our Menu</h1>
+
+                <p>
+                    From freshly brewed coffee to delicious bakery
+                    treats and refreshing cold drinks, there's
+                    something for every café moment.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Coffee Section -->
+        <section class="menu-section">
+            <div class="container">
+
+                <div class="menu-heading">
+                    <p class="section-tag">FRESHLY BREWED</p>
+
+                    <h2>Coffee</h2>
+
+                    <p>
+                        Made for slow mornings, afternoon breaks,
+                        and everything in between.
+                    </p>
+                </div>
+
+                <div class="menu-grid">
+
+                    <div class="menu-card">
+                        <img
+                            src="images/cappuccino.jpg"
+                            alt="Classic cappuccino"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Classic Cappuccino</h3>
+
+                            <p>
+                                Rich espresso topped with steamed
+                                milk and a smooth layer of foam.
+                            </p>
+
+                            <span class="price">₹150</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/iced-latte.jpg"
+                            alt="Caramel latte"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Caramel Latte</h3>
+
+                            <p>
+                                Smooth espresso and milk
+                                with a touch of sweet caramel.
+                            </p>
+
+                            <span class="price">₹180</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/cappuccino.jpg"
+                            alt="Classic espresso coffee"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Classic Espresso</h3>
+
+                            <p>
+                                A bold, aromatic coffee with
+                                a rich and full-bodied flavour.
+                            </p>
+
+                            <span class="price">₹100</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Bakery Section -->
+        <section class="menu-section">
+            <div class="container">
+
+                <div class="menu-heading">
+                    <p class="section-tag">FRESH FROM THE OVEN</p>
+
+                    <h2>Bakery Favourites</h2>
+
+                    <p>
+                        Delicious baked treats to enjoy with
+                        your favourite cup of coffee.
+                    </p>
+                </div>
+
+                <div class="menu-grid">
+
+                    <div class="menu-card">
+                        <img
+                            src="images/croissant.jpg"
+                            alt="Golden butter croissant"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Butter Croissant</h3>
+
+                            <p>
+                                A golden, flaky pastry with
+                                a soft and buttery centre.
+                            </p>
+
+                            <span class="price">₹120</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/croissant.jpg"
+                            alt="Chocolate pastry"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Chocolate Pastry</h3>
+
+                            <p>
+                                A soft, sweet bakery treat
+                                for chocolate lovers.
+                            </p>
+
+                            <span class="price">₹160</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/croissant.jpg"
+                            alt="Freshly baked muffin"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Fresh Muffin</h3>
+
+                            <p>
+                                A soft and fluffy muffin
+                                for a delightful snack.
+                            </p>
+
+                            <span class="price">₹110</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Cold Drinks Section -->
+        <section class="menu-section">
+            <div class="container">
+
+                <div class="menu-heading">
+                    <p class="section-tag">COOL & REFRESHING</p>
+
+                    <h2>Cold Drinks</h2>
+
+                    <p>
+                        Refresh yourself with a chilled drink
+                        made for sunny days and relaxing moments.
+                    </p>
+                </div>
+
+                <div class="menu-grid">
+
+                    <div class="menu-card">
+                        <img
+                            src="images/iced-latte.jpg"
+                            alt="Refreshing iced latte"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Iced Latte</h3>
+
+                            <p>
+                                Espresso and chilled milk served
+                                over ice for a refreshing taste.
+                            </p>
+
+                            <span class="price">₹170</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/iced-latte.jpg"
+                            alt="Iced caramel coffee"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Iced Caramel Coffee</h3>
+
+                            <p>
+                                Chilled coffee with milk, ice,
+                                and a sweet caramel flavour.
+                            </p>
+
+                            <span class="price">₹190</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card">
+                        <img
+                            src="images/iced-latte.jpg"
+                            alt="Cold creamy coffee"
+                        >
+
+                        <div class="menu-card-content">
+                            <h3>Cold Coffee</h3>
+
+                            <p>
+                                A cool, creamy coffee drink
+                                for a refreshing break.
+                            </p>
+
+                            <span class="price">₹160</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Note -->
+        <section class="menu-note">
+            <div class="container">
+
+                <p>
+                    <strong>Note:</strong> Menu items and prices
+                    are sample content for this website project.
+                    They can be changed to match your actual menu.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+
+                <p class="section-tag">COME BY AND SAY HELLO</p>
+
+                <h2>Your Favourite Café Moment Awaits</h2>
+
+                <p>
+                    Visit Luma Café in Varkala, Kerala,
+                    and enjoy a relaxing café experience.
+                </p>
+
+                <a href="contact.html" class="nav-button">
+                    Contact Us
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    Luma<span>Café</span>
+                </a>
+
+                <p>
+                    Good coffee, fresh bakes, and beautiful moments.
+                    Welcome to Luma Café.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+
+                <p>
+                    <a href="tel:+919037261654">
+                        +91 90372 61654
+                    </a>
+                </p>
+
+                <p>
+                    <a href="mailto:knkrisanu777@gmail.com">
+                        knkrisanu777@gmail.com
+                    </a>
+                </p>
+
+                <p>Varkala, Kerala, India</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Luma Café. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
